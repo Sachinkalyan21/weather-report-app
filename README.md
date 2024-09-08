@@ -1,70 +1,131 @@
-# Getting Started with Create React App
+# Weather report application
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+This project is a "WEATHER REPORT APPLICATION" built using *React*. The application allows users to search for cities, view city weather details, and explore weather forecasts. TypeScript is optional and not required for this implementation.
 
-## Available Scripts
+# Components Overview
 
-In the project directory, you can run:
+1. *CitiesTable.js*
+   - Fetches the list of cities using the public Open Data Soft API.
+   - Handles infinite scrolling to load more cities as the user scrolls down.
+   - Includes functionality to filter and sort cities by columns such as name, country, and timezone.
 
-### `npm start`
+2. *WeatherPage.js*
+   - Fetches and displays weather information for a specific city using the OpenWeatherMap API with API key.
+   - Displays current conditions as well as a forecast for upcoming days.
+   - Weather icon change dynamically based on weather conditions.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+3. *Home.js*
+   - The home page of the application, which displays the CitiesTable component.
+   - Links to the weather details page of a selected city.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+## Features
 
-### `npm test`
+### 1. Cities Table
+- *Infinite Scroll:* Displays cities in a table format with infinite scrolling for seamless data loading.
+- *Search as You Type:* Implements an autocomplete feature to suggest cities as users type in the search bar.
+- *Filter & Sort:* Allows filtering and sorting by various columns such as city name, country, and timezone.
+- *Navigation:* Clicking on a city name navigates to the weather details page for that city. Right-clicking opens the weather page in a new tab.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+### 2. Weather Page
+- *Weather Details:* Displays current weather conditions, including temperature, weather description, humidity, wind speed, and atmospheric pressure.
+- *Forecast:* Shows future temperature highs and lows, weather descriptions, and precipitation chances.
+- *Dynamic Backgrounds:* Adjusts the background of the page based on current weather conditions (e.g., sunny, rainy, cloudy).
+- *Additional Features:* Includes options to switch between different measurement units (e.g., Celsius/Fahrenheit) and display the location on a map.
 
-### `npm run build`
+### 3. Responsive Design
+- Ensures that the application is responsive, adapting to various screen sizes with the use of media queries and responsive design techniques.
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+### 4. Error Handling
+- Gracefully handles errors in API requests and invalid search queries by displaying relevant error messages to users.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+### 5. State Management
+- Utilizes React's built-in state management to efficiently display data and avoid unnecessary re-fetching of data across components.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+## Optional Features
 
-### `npm run eject`
+- *Geolocation:* Automatically detects and displays weather information for the user's current location.
+- *Favorites:* Allows users to save their favorite locations for quick access to weather data.
+- *Weather History:* Maintains a history of recently viewed locations' weather data.
+- *Unit Conversion:* Provides an option to switch between different units of measurement (e.g., Celsius/Fahrenheit, metric).
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+## Tech Stack
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+- *Frontend Framework:* React
+- *Styling:* CSS Modules (Optional: Tailwind CSS)
+- *API Integration:* OpenWeatherMap API
+- *Deployment:* Vercel
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+## Setup Instructions
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+### Prerequisites
 
-## Learn More
+- *Node.js* installed
+- *OpenWeatherMap API key* (Free tier available)
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+# Completion Instructions 
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+    Functionality to be added
 
-### Code Splitting
+        The app must have the following functionalities
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+        When the app is opened, Weather report application Page should be displayed
+        When the Weather report application Page is opened,
+        Make HTTP GET request to the CitiesApiUrl
+        After fetching the data, the list of Cities name should be displayed
+        When we click on the cities name in Home Route is clicked,
+        Page should be navigated to the WeatherPage Route with the URL //weather/:city
+        When the WeatherPage Route is opened,
+        Make HTTP GET request to the openweathermapApiUrl with the weather details
+        Example: https://api.openweathermap.org/data/2.5/weather?q=hyderabad&appid=54c87ef22200b8cfab10504cbeeb1b68&units=metric
+        After fetching the data, weather details should be displayed
 
-### Analyzing the Bundle Size
+## API Requests 
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+CitiesApiUrl
 
-### Making a Progressive Web App
+API: https://public.opendatasoft.com/api/records/1.0/search/?dataset=geonames-all-cities-with-a-population-1000&q=${query}&rows=10&start=${reset ? 0 : page * 10}
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+Method: GET
 
-### Advanced Configuration
+Description:
+    Returns to all cities list
+    
+Weather Report API Url
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+    API: https://api.openweathermap.org/data/2.5/weather?q=hyderabad&appid=54c87ef22200b8cfab10504cbeeb1b68&units=metric
 
-### Deployment
+Method: GET
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+Description:
+    Returns to selected city weather details
 
-### `npm run build` fails to minify
+### Installation
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+1. Clone the repository:
+   bash
+   git clone https://github.com/Sachinkalyan21/weather-report-application.git
+   cd weather-app
+2. Install the dependencies:
+   bash
+   npm install
+Set up environment variables:
+
+
+bash
+Copy code
+npm start
+This will run the application in development mode. Open http://localhost:3000 to view it in your browser.
+
+Deployment
+To deploy the app, follow these steps:
+
+Build the production version of the application:
+
+bash
+Copy code
+npm run build
+Deploy the build folder to your preferred hosting provider. Vercel is a great choice for React applications:
+
+Go to Vercel and sign up or log in.
+Create a new project and link your GitHub repository.
+Deploy the project with just a few clicks.
