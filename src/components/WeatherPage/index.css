@@ -93,4 +93,9 @@
     .back-button{
         width: 22px;
     }
+    .arrow{
+        display: flex;
+        justify-content: flex-start;
+        
+    }
 }

@@ -15,7 +15,7 @@ const WeatherPage = () => {
   const fetchWeather = useCallback(async () => {
     try {
       const res = await axios.get(
-        `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=24a0aa595a955cb1ee38fa1d7be1735b&units=metric`
+        `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=54c87ef22200b8cfab10504cbeeb1b68&units=metric`
       );
       console.log("api data", res.data)
       setWeather(res.data);
@@ -40,9 +40,11 @@ const WeatherPage = () => {
         <h1>Weather Details</h1>
       {weather ? (
         <div className='weather-details-container'>
+          <div className='arrow'>
             <Link to="/">
                 <img src="https://cdn-icons-png.flaticon.com/128/5720/5720446.png" alt="back arrow" className='back-button'/>
             </Link>
+            </div>
             <div className='weather'>
             <img src={`https://openweathermap.org/img/wn/${iconId}@2x.png`} className="weather-icon" alt="weather icon"/>
             <h1 className="temp">{Math.round(weather.main.temp)}°C</h1>
